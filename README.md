@@ -6,3 +6,4 @@
 + gulp-imagemin
 + gulp-sass
 + gulp-uglify
++ gulp-concat
