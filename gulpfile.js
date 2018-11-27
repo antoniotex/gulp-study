@@ -10,14 +10,14 @@ const sass = require('gulp-sass')
     gulp.src - Ppoint tofiles to use
     gulp.dest - Points to folder to output
     gulp.watch - Watch files and folders for changes
-    
+
 */
 
 //Logs Message
 //dei gulp message para imprimir esse console log
 gulp.task('message', () => console.log('Gulp is running 1'))
 //Executei esse somente digitando gulp, pois é default
-gulp.task('default', () => console.log('Gulp is running 2'))
+// gulp.task('default', () => console.log('Gulp is running 2'))
 
 // Copia todos os arquivos HTML para a pasta dist
 gulp.task('copyHtml', () => gulp.src('src/*.html').pipe(gulp.dest('dist')))
@@ -43,3 +43,6 @@ gulp.task('sass', () => {
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('dist/css'))
 })
+
+// Executa todas as tasks de uma só vez, e é lindo de se ver =)
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass'])
