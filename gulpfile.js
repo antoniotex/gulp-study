@@ -56,3 +56,10 @@ gulp.task('scripts', () => {
 
 // Executa todas as tasks de uma só vez, e é lindo de se ver =)
 gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'scripts'])
+
+gulp.task('watch', () => {
+    gulp.watch('src/js/*.js', ['scripts'])
+    gulp.watch('src/images/*', ['imageMin'])
+    gulp.watch('src/sass/*.scss', ['sass'])
+    gulp.watch('src/*.html', ['copyHtml'])
+})
