@@ -3,6 +3,7 @@ const gulp = require('gulp')
 const imagemin = require('gulp-imagemin')
 const uglify = require('gulp-uglify')
 const sass = require('gulp-sass')
+const concat = require('gulp-concat')
 
 /*
     -- TOP LEVEL FUNCTIONS --
@@ -16,6 +17,7 @@ const sass = require('gulp-sass')
 //Logs Message
 //dei gulp message para imprimir esse console log
 gulp.task('message', () => console.log('Gulp is running 1'))
+
 //Executei esse somente digitando gulp, pois é default
 // gulp.task('default', () => console.log('Gulp is running 2'))
 
@@ -44,5 +46,13 @@ gulp.task('sass', () => {
         .pipe(gulp.dest('dist/css'))
 })
 
+// Juntando os scripts do projeto
+gulp.task('scripts', () => {
+    gulp.src('src/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
+})
+
 // Executa todas as tasks de uma só vez, e é lindo de se ver =)
-gulp.task('default', ['message', 'copyHtml', 'imageMin', 'minify', 'sass'])
+gulp.task('default', ['message', 'copyHtml', 'imageMin', 'sass', 'scripts'])
